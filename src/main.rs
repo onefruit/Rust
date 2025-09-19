@@ -6,6 +6,8 @@ fn main() {
 
     let num1: i32 = rng.gen_range(1..=10);
 
+    loop{
+
     let mut input = String::new();
     
     println!("Guess a number between 1 and 10:");
@@ -17,14 +19,18 @@ fn main() {
         Ok(num) => num,
         Err(_) => {
             println!("Please enter a valid number!");
-            return;
+            continue;
         }
     };
    
 
-    if num1 == input_num {
-        println!("You win!");
-    } else {
-        println!("Try again! The number was {}", num1);
-    }
+  if input_num == num1 {
+            println!("You win!");
+            break; // exit loop
+        } else if input_num < num1 {
+            println!("Too low! Try again.");
+        } else {
+            println!("Too high! Try again.");
+        }
+}
 }
